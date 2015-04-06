@@ -63,4 +63,17 @@ Then did he raise on high the Holy Hand Grenade of Antioch, saying, "Bless this,
       expect(page).to have_content 'A Reading from the Book of Armaments, Chapter 4'
     end
   end
+
+  context 'deleting posts' do 
+    before do 
+      Post.create(title: 'Holy Hand Grenade of Antioch', description: 'A Reading from the Book of Armaments, Chapter 4')
+    end
+
+    scenario 'removes a post' do 
+      visit '/posts'
+      click_link 'Delete Holy Hand Grenade of Antioch'
+      expect(page).not_to have_content 'Holy Hand Grenade of Antioch'
+      expect(page).to have_content 'Post deleted'
+    end
+  end
 end

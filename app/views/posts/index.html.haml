@@ -1,7 +1,7 @@
   
 - if @posts.each.any?
   - @posts.each do |post|
-    %h2= post.title
+    = link_to post.title, post_path(post)
 - else
   %h1 no posts added  
 

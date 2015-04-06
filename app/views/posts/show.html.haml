@@ -1,2 +1,10 @@
 %p= @post.title
 %p= @post.description
+%p= @post.created_at
+
+- if @post.comments.any?
+  - @post.comments.each do |comment|
+    = comment.content
+    = comment.created_at
+- else
+  %p there are no comments for this post
